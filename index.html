@@ -4,15 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study with me LIVE Schedule</title>
-</head>
 
-<body style="background:#0f172a;color:white;font-family:Arial;text-align:center;padding-top:100px;">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0b1f1a,#102820,#17382c);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:700px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border-radius:20px;
+padding:30px;
+box-shadow:0 0 25px rgba(0,255,150,.25);
+text-align:center;
+}
+
+h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.channel{
+font-size:18px;
+color:#9effc8;
+margin-bottom:25px;
+}
+
+.live{
+display:inline-block;
+padding:8px 18px;
+border-radius:50px;
+background:#ff2d55;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.clock{
+font-size:42px;
+font-weight:bold;
+margin:20px 0;
+}
+
+.schedule{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:15px;
+margin-top:25px;
+text-align:left;
+}
+
+.schedule h2{
+margin-bottom:15px;
+}
+
+.schedule p{
+margin:10px 0;
+font-size:18px;
+}
+
+.button{
+display:inline-block;
+margin-top:25px;
+padding:15px 28px;
+background:#00c853;
+color:white;
+text-decoration:none;
+font-weight:bold;
+border-radius:12px;
+transition:.3s;
+}
+
+.button:hover{
+transform:scale(1.05);
+background:#00e676;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
 
 <h1>📚 Study with me LIVE Schedule</h1>
 
-<p>Website is under construction 🚧</p>
+<div class="channel">
+Study with me (UPSC)
+</div>
 
-<p>Study with me (UPSC)</p>
+<div class="live" id="status">
+🔴 Checking...
+</div>
+
+<div class="clock" id="clock">
+00:00:00
+</div><div class="schedule">
+
+<h2>📅 Weekly Schedule</h2>
+
+<p>🟢 Sunday : 11:00 PM → 11:00 AM</p>
+<p>🟢 Monday : 11:00 PM → 11:00 AM</p>
+<p>🟢 Tuesday : 11:00 PM → 11:00 AM</p>
+<p>🟢 Wednesday : 11:00 PM → 11:00 AM</p>
+<p>🟢 Thursday : 11:00 PM → 11:00 AM</p>
+<p>🟢 Friday : 11:00 PM → 11:00 AM</p>
+<p style="color:#ff7070;">🔴 Saturday : OFF</p>
+
+</div>
+
+<a class="button"
+href="https://youtube.com/@studywithmeupsc_1?si=1FuK7Ji9uJl_L8DA"
+target="_blank">
+▶ Join YouTube Live
+</a>
+
+<p style="margin-top:25px;color:#b9ffd4;">
+Stay focused. Stay consistent. 💚
+</p></div>
+
+<script>
+// LIVE CLOCK
+function updateClock(){
+let now = new Date();
+let h = now.getHours();
+let m = now.getMinutes();
+let s = now.getSeconds();
+
+h = h < 10 ? "0"+h : h;
+m = m < 10 ? "0"+m : m;
+s = s < 10 ? "0"+s : s;
+
+document.getElementById("clock").innerText = h + ":" + m + ":" + s;
+
+// LIVE / OFF STATUS (11PM - 11AM)
+let status = document.getElementById("status");
+
+if(h >= 23 || h < 11){
+status.innerText = "🔴 LIVE NOW";
+status.style.background = "#ff2d55";
+} else {
+status.innerText = "⚫ OFF TIME";
+status.style.background = "#555";
+}
+}
+
+setInterval(updateClock,1000);
+updateClock();
+</script>
 
 </body>
 </html>
