@@ -1,7 +1,6 @@
-// LIVE CLOCK + DATE + STATUS SYSTEM
-
 function updateWebsite() {
   const now = new Date();
+  const hour = now.getHours();
 
   // CLOCK
   const clock = document.getElementById("clock");
@@ -12,52 +11,24 @@ function updateWebsite() {
   // DATE
   const date = document.getElementById("date");
   if (date) {
-    date.innerText = now.toLocaleDateString("en-IN", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
+    date.innerText = now.toLocaleDateString("en-IN");
   }
 
-  // LIVE STATUS (11 PM to 11 AM)
-  const hour = now.getHours();
-  const liveBadge = document.querySelector(".live-badge");
+  // LIVE STATUS
+  const live = document.querySelector(".live-badge");
 
-  if (liveBadge) {
+  if (live) {
     if (hour >= 23 || hour < 11) {
-      liveBadge.style.display = "block";
-      liveBadge.innerText = "🔴 LIVE NOW";
-      liveBadge.style.background = "#ff2d55";
+      live.innerText = "🔴 LIVE NOW";
+      live.style.display = "block";
+      live.style.background = "#ff2d55";
     } else {
-      liveBadge.style.display = "none";
+      live.innerText = "⚫ OFF TIME";
+      live.style.display = "block";
+      live.style.background = "#444";
     }
   }
 }
 
-// MOTIVATION QUOTES
-const quotes = [
-  "Discipline is the key to success.",
-  "Stay focused and never give up.",
-  "Small efforts every day = Big success.",
-  "Your future depends on today.",
-  "Consistency beats motivation."
-];
-
-let i = 0;
-
-function changeQuote() {
-  const quoteBox = document.getElementById("quote");
-  if (quoteBox) {
-    quoteBox.innerText = quotes[i];
-    i = (i + 1) % quotes.length;
-  }
-}
-
-// RUN EVERY SECOND
 setInterval(updateWebsite, 1000);
 updateWebsite();
-
-// CHANGE QUOTE EVERY 5 SEC
-setInterval(changeQuote, 5000);
-changeQuote();
