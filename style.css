@@ -263,3 +263,44 @@ color:#bdbdbd;
 font-size:17px;
 background:rgba(255,255,255,.03);
 }
+/* ===== PREMIUM BACKGROUND ===== */
+
+body{
+    background: linear-gradient(135deg,#090914,#11152a,#1a1038);
+    background-size: 400% 400%;
+    animation: bgMove 15s ease infinite;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Purple Glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#8b5cf6;
+    filter:blur(180px);
+    opacity:.18;
+    top:-120px;
+    left:-120px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#00ffd5;
+    filter:blur(180px);
+    opacity:.15;
+    bottom:-120px;
+    right:-120px;
+    z-index:-1;
+}
