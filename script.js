@@ -1,62 +1,63 @@
+// LIVE CLOCK + DATE + STATUS SYSTEM
 
-// LIVE CLOCK + DATE
+function updateWebsite() {
+  const now = new Date();
 
+  // CLOCK
+  const clock = document.getElementById("clock");
+  if (clock) {
+    clock.innerText = now.toLocaleTimeString("en-IN");
+  }
+
+  // DATE
+  const date = document.getElementById("date");
+  if (date) {
+    date.innerText = now.toLocaleDateString("en-IN", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+  }
+
+  // LIVE STATUS (11 PM to 11 AM)
+  const hour = now.getHours();
+  const liveBadge = document.querySelector(".live-badge");
+
+  if (liveBadge) {
+    if (hour >= 23 || hour < 11) {
+      liveBadge.style.display = "block";
+      liveBadge.innerText = "🔴 LIVE NOW";
+      liveBadge.style.background = "#ff2d55";
+    } else {
+      liveBadge.style.display = "none";
+    }
+  }
+}
+
+// MOTIVATION QUOTES
 const quotes = [
-"Discipline beats motivation.",
-"Success comes from consistency.",
-"Small steps every day lead to big results.",
-"Dream big. Study harder.",
-"Stay focused. Your future is watching."
+  "Discipline is the key to success.",
+  "Stay focused and never give up.",
+  "Small efforts every day = Big success.",
+  "Your future depends on today.",
+  "Consistency beats motivation."
 ];
 
-function updateClock(){
+let i = 0;
 
-const now = new Date();
-
-document.getElementById("clock").innerHTML =
-now.toLocaleTimeString("en-IN",{
-hour:"2-digit",
-minute:"2-digit",
-second:"2-digit"
-});
-
-document.getElementById("date").innerHTML =
-now.toLocaleDateString("en-IN",{
-weekday:"long",
-day:"numeric",
-month:"long",
-year:"numeric"
-});
-
-let h = now.getHours();
-
-let status = document.getElementById("status");
-
-if(h>=23 || h<11){
-
-status.innerHTML="🔴 LIVE NOW";
-status.style.background="#ff2d55";
-
-}else{
-
-status.innerHTML="⚫ OFF TIME";
-status.style.background="#555";
-
+function changeQuote() {
+  const quoteBox = document.getElementById("quote");
+  if (quoteBox) {
+    quoteBox.innerText = quotes[i];
+    i = (i + 1) % quotes.length;
+  }
 }
 
-}
+// RUN EVERY SECOND
+setInterval(updateWebsite, 1000);
+updateWebsite();
 
-setInterval(updateClock,1000);
-
-updateClock();
-
-let i=0;
-
-setInterval(()=>{
-
-i++;
-
-document.getElementById("quote").innerHTML =
-quotes[i%quotes.length];
-
-},5000);
+// CHANGE QUOTE EVERY 5 SEC
+setInterval(changeQuote, 5000);
+changeQuote();
