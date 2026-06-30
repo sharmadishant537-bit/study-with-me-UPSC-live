@@ -407,3 +407,149 @@ h1{
                 0 0 35px #00ff99,
                 0 0 55px #00ff99;
                                 }
+/* ===== PREMIUM BUTTONS ===== */
+
+.btn,
+button,
+a{
+    transition:all .35s ease;
+}
+
+.btn:hover,
+button:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 20px #8b5cf6,
+               0 0 40px #8b5cf6;
+}
+
+/* ===== SECTION TITLE ===== */
+
+.section-title{
+    font-size:42px;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:35px;
+    color:#ffffff;
+    text-shadow:0 0 18px #8b5cf6;
+}
+
+/* ===== PREMIUM CARDS ===== */
+
+.schedule-card,
+.day-card{
+    transition:.35s;
+}
+
+.schedule-card:hover,
+.day-card:hover{
+    transform:translateY(-10px);
+    border:1px solid #8b5cf6;
+    box-shadow:0 0 35px rgba(139,92,246,.5);
+}
+
+/* ===== SCROLL BAR ===== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111827;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#8b5cf6;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#a855f7;
+}/* ===== PART 5 : PREMIUM FINISH ===== */
+
+/* Smooth Scroll */
+html{
+    scroll-behavior:smooth;
+}
+
+/* Gradient Heading */
+h1,h2{
+    background:linear-gradient(90deg,#ffffff,#a855f7,#00ffd5);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Images */
+img{
+    border-radius:20px;
+    transition:.4s;
+}
+
+img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(168,85,247,.6);
+}
+
+/* Footer */
+footer{
+    margin-top:60px;
+    padding:30px;
+    text-align:center;
+    color:#bdbdbd;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* Selection Color */
+::selection{
+    background:#8b5cf6;
+    color:#fff;
+}/* ===== PART 6 : FINAL PREMIUM EFFECTS ===== */
+
+/* Floating animation */
+@keyframes floating{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0px);}
+}
+
+.logo,
+.hero img,
+.clock-box{
+  animation:floating 4s ease-in-out infinite;
+}
+
+/* Neon glow effect */
+.glow{
+  text-shadow:
+  0 0 10px #8b5cf6,
+  0 0 20px #8b5cf6,
+  0 0 40px #8b5cf6;
+}
+
+/* Card hover */
+.card{
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 30px rgba(168,85,247,.6);
+}
+
+/* Button hover */
+button,
+.btn{
+  transition:0.35s;
+}
+
+button:hover,
+.btn:hover{
+  transform:scale(1.08);
+}
+
+/* Footer */
+footer{
+  padding:40px 20px;
+  text-align:center;
+  color:#bbb;
+  font-size:15px;
+}
