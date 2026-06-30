@@ -5,165 +5,326 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study with me LIVE Schedule</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0b1f1a,#102820,#17382c);
-color:white;
+
+background:
+linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.80)),
+radial-gradient(circle at top,#00ff9950,#000);
+
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
 padding:20px;
+color:white;
+
 }
 
-.card{
+.container{
+
 width:100%;
-max-width:700px;
+max-width:900px;
+
 background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-border-radius:20px;
-padding:30px;
-box-shadow:0 0 25px rgba(0,255,150,.25);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:30px;
+
+padding:40px;
+
+box-shadow:
+0 0 30px rgba(0,255,150,.25);
+
 text-align:center;
+
+animation:fade 1s ease;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
 }
 
 h1{
-font-size:32px;
+
+font-size:42px;
+font-weight:700;
 margin-bottom:10px;
+
 }
 
-.channel{
-font-size:18px;
-color:#9effc8;
-margin-bottom:25px;
+.subtitle{
+
+color:#8fffc8;
+
+font-size:20px;
+
+margin-bottom:30px;
+
 }
 
 .live{
+
 display:inline-block;
-padding:8px 18px;
+
+padding:12px 28px;
+
 border-radius:50px;
-background:#ff2d55;
+
+background:#ff0033;
+
 font-weight:bold;
-margin-bottom:20px;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
 }
 
 .clock{
-font-size:42px;
+
+font-size:70px;
+
 font-weight:bold;
-margin:20px 0;
+
+margin:35px 0;
+
+color:#7CFFB2;
+
+text-shadow:0 0 20px #00ff99;
+
 }
 
-.schedule{
-background:rgba(255,255,255,.08);
-padding:20px;
-border-radius:15px;
-margin-top:25px;
+.date{
+
+font-size:20px;
+
+opacity:.9;
+
+margin-bottom:25px;
+
+}.schedule-card{
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:20px;
+
+padding:25px;
+
+margin-top:30px;
+
 text-align:left;
+
 }
 
-.schedule h2{
-margin-bottom:15px;
+.schedule-card h2{
+
+text-align:center;
+
+margin-bottom:20px;
+
+color:#7CFFB2;
+
 }
 
-.schedule p{
-margin:10px 0;
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
 font-size:18px;
+
 }
 
-.button{
-display:inline-block;
-margin-top:25px;
-padding:15px 28px;
-background:#00c853;
-color:white;
-text-decoration:none;
+.off{
+
+color:#ff5d5d;
+
 font-weight:bold;
-border-radius:12px;
-transition:.3s;
+
 }
 
-.button:hover{
-transform:scale(1.05);
-background:#00e676;
+.btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:16px 34px;
+
+background:linear-gradient(90deg,#00c853,#00e676);
+
+color:#fff;
+
+text-decoration:none;
+
+border-radius:14px;
+
+font-weight:700;
+
+transition:.3s;
+
+box-shadow:0 0 20px rgba(0,255,150,.35);
+
 }
+
+.btn:hover{
+
+transform:scale(1.05);
+
+}
+
+.quote{
+
+margin-top:30px;
+
+font-size:18px;
+
+color:#b9ffd4;
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="card">
+<div class="container">
 
 <h1>📚 Study with me LIVE Schedule</h1>
 
-<div class="channel">
-Study with me (UPSC)
-</div>
+<p class="subtitle">Study with me (UPSC)</p>
 
-<div class="live" id="status">
-🔴 Checking...
-</div>
+<div class="live" id="status">🔴 LIVE NOW</div>
 
-<div class="clock" id="clock">
-00:00:00
-</div><div class="schedule">
+<div class="clock" id="clock">00:00:00</div>
+
+<div class="date" id="date"></div>
+
+<div class="schedule-card">
 
 <h2>📅 Weekly Schedule</h2>
 
-<p>🟢 Sunday : 11:00 PM → 11:00 AM</p>
-<p>🟢 Monday : 11:00 PM → 11:00 AM</p>
-<p>🟢 Tuesday : 11:00 PM → 11:00 AM</p>
-<p>🟢 Wednesday : 11:00 PM → 11:00 AM</p>
-<p>🟢 Thursday : 11:00 PM → 11:00 AM</p>
-<p>🟢 Friday : 11:00 PM → 11:00 AM</p>
-<p style="color:#ff7070;">🔴 Saturday : OFF</p>
+<div class="row"><span>Sunday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Monday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Tuesday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Wednesday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Thursday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Friday</span><span>11:00 PM → 11:00 AM</span></div>
+
+<div class="row"><span>Saturday</span><span class="off">OFF</span></div>
 
 </div>
 
-<a class="button"
+<a class="btn"
 href="https://youtube.com/@studywithmeupsc_1?si=1FuK7Ji9uJl_L8DA"
 target="_blank">
 ▶ Join YouTube Live
 </a>
 
-<p style="margin-top:25px;color:#b9ffd4;">
-Stay focused. Stay consistent. 💚
-</p></div>
+<p class="quote">
+💚 Stay focused. Stay consistent.
+</p><script>
 
-<script>
-// LIVE CLOCK
-function updateClock(){
-let now = new Date();
-let h = now.getHours();
-let m = now.getMinutes();
-let s = now.getSeconds();
+function updateTime(){
 
-h = h < 10 ? "0"+h : h;
-m = m < 10 ? "0"+m : m;
-s = s < 10 ? "0"+s : s;
+const now = new Date();
 
-document.getElementById("clock").innerText = h + ":" + m + ":" + s;
+const clock = document.getElementById("clock");
+const date = document.getElementById("date");
+const status = document.getElementById("status");
 
-// LIVE / OFF STATUS (11PM - 11AM)
-let status = document.getElementById("status");
+clock.innerHTML = now.toLocaleTimeString("en-IN",{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit",
+hour12:true
+});
 
-if(h >= 23 || h < 11){
-status.innerText = "🔴 LIVE NOW";
-status.style.background = "#ff2d55";
-} else {
-status.innerText = "⚫ OFF TIME";
-status.style.background = "#555";
+date.innerHTML = now.toLocaleDateString("en-IN",{
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+});
+
+const day = now.getDay();
+const hour = now.getHours();
+
+if(day===6){
+
+status.innerHTML="🚫 SATURDAY OFF";
+status.style.background="#ff4444";
+
+}else if(hour>=23 || hour<11){
+
+status.innerHTML="🔴 LIVE NOW";
+status.style.background="#ff0033";
+
+}else{
+
+status.innerHTML="⚫ OFF TIME";
+status.style.background="#555";
+
 }
+
 }
 
-setInterval(updateClock,1000);
-updateClock();
+setInterval(updateTime,1000);
+
+updateTime();
+
 </script>
 
+</div>
+
 </body>
+
 </html>
